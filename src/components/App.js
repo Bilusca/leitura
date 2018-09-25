@@ -6,6 +6,11 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
+        <div className="app-body">
+          <div className="wrapper">
+            Aqui
+          </div>
+        </div>
       </div>
     );
   }

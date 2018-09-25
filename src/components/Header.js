@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCategories } from '../actions';
-import { capitalize } from '../utils/capitalize'
+import { capitalize } from '../utils/capitalize';
 
 class Header extends Component {
   componentDidMount() {
@@ -9,7 +9,6 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { categories } = this.props;
 
     return (
