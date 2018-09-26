@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Header from './Header'
+import Header from './Header';
+import { Switch, Route } from 'react-router-dom';
+import PostList from './PostList';
 
 class App extends Component {
   render() {
@@ -8,7 +10,9 @@ class App extends Component {
         <Header />
         <div className="app-body">
           <div className="wrapper">
-            Aqui
+            <Switch>
+              <Route exact path="/" component={PostList}  />
+            </Switch>
           </div>
         </div>
       </div>
