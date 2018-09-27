@@ -1,9 +1,16 @@
 import React from 'react';
 
-const Post = () => (
+const Post = ({title, body}) => (
   <div className="post">
-    POST AQUI
-    <h2>OUtro</h2>
+    <div className="post-header">
+      {title}
+    </div>
+    <div className="post-body">
+      {body}
+    </div>
+    <div className="post-footer">
+
+    </div>
   </div>
 );
 

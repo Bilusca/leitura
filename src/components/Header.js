@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCategories } from '../actions';
 import { capitalize } from '../utils/capitalize';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
   componentDidMount() {
@@ -16,10 +17,16 @@ class Header extends Component {
         <div className="wrapper">
           <h1>Readable</h1>
           <ul>
-            <li>All</li>
+            <li>
+              <Link to="/">All</Link>
+            </li>
             {categories &&
               categories.map(category => (
-                <li key={category.path}>{capitalize(category.name)}</li>
+                <li key={category.path}>
+                  <Link to={`/${category.path}`}>
+                    {capitalize(category.name)}
+                  </Link>
+                </li>
               ))}
           </ul>
         </div>

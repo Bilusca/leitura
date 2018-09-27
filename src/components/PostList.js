@@ -10,12 +10,10 @@ class PostList extends Component {
 
   render() {
     console.log(this.props);
+    const { posts } = this.props;
     return (
         <div className="post-list">
-            <Post />
-            <Post />
-            <Post />
-            <Post />
+            {posts && posts.map(post => <Post key={post.id} {...post} />)}
         </div>
     );
   }
