@@ -11,8 +11,12 @@ class App extends Component {
         <div className="app-body">
           <div className="wrapper">
             <Switch>
-              <Route exact path="/" component={PostList}  />
-              <Route exact path="/:category" component={ (props) => <PostList {...props}/>}  />
+              <Route exact path="/" component={PostList} />
+              <Route
+                exact
+                path="/:category"
+                component={props => <PostList {...props} />}
+              />
             </Switch>
           </div>
         </div>

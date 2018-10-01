@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchAllPosts } from '../actions';
+import { fetchAllPosts, fetchAllPostsByCategory } from '../actions';
 import Post from './Post';
 
 class PostList extends Component {
   componentDidMount() {
-    this.props.fetchPosts();
+    if (this.props.match.path !== '/') {
+      const { match } = this.props;
+      this.props.fetchPostsByCategory(match.params.category);
+    } else {
+      this.props.fetchPosts();
+    }
   }
 
   render() {
-    console.log(this.props);
     const { posts } = this.props;
     return (
-        <div className="post-list">
-            {posts && posts.map(post => <Post key={post.id} {...post} />)}
-        </div>
+      <div className="post-list">
+        {posts && posts.map(post => <Post key={post.id} {...post} />)}
+      </div>
     );
   }
 }
@@ -25,6 +29,7 @@ const mapStateToProps = ({ posts }) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchPosts: () => dispatch(fetchAllPosts()),
+  fetchPostsByCategory: category => dispatch(fetchAllPostsByCategory(category)),
 });
 
 export default connect(

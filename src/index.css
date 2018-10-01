@@ -12,7 +12,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .app-header {
@@ -21,7 +21,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 5px 10px 0px rgba(0,0,0,.5);
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .app-header h1 {
@@ -36,7 +36,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0
+  padding: 0;
 }
 
 .app-header ul li {
@@ -82,7 +82,7 @@ body {
   background: #fff;
   border: 1px solid #dfdfdf;
   border-radius: 5px;
-  box-shadow: 5px 5px 5px 0px rgba(0,0,0,.5);
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
   margin-bottom: 15px;
 }
 
@@ -92,14 +92,65 @@ body {
   font-weight: 600;
   color: rgb(0, 120, 212);
   border-bottom: 1px solid #dfdfdf;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-size: 21px;
 }
 
-.post .pos-body {
+.post .post-body {
   box-sizing: border-box;
   padding: 10px 5px;
-  font-size: 21px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post .post-body p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.post .post-body .post-category {
+  display: inline-block;
+  max-width: 10%;
+  text-align: center;
+  color: #fff;
+  height: 20px;
+  font-size: 15px;
+  margin-bottom: 5px;
+  background: rgb(0, 120, 212);
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+.post .post-footer {
+  border-top: 1px solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5px;
+}
+
+.post .post-footer div {
+  display: flex;
+}
+
+.post .post-footer .comments svg {
+  height: 1.6em;
+  width: 1.6em;
+  stroke: rgb(0, 120, 212);
+}
+
+.post .post-footer .comments .count {
+  position: relative;
+  right: 15px;
+  bottom: 15px;
+  background: #eb191e;
+  font-size: 11px;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
 }
 
 .wrapper {
