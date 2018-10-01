@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCategories } from '../actions';
 import { capitalize } from '../utils/capitalize';
-import { Link } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 class Header extends Component {
   componentDidMount() {
@@ -18,14 +18,20 @@ class Header extends Component {
           <h1>Readable</h1>
           <ul>
             <li>
-              <Link to="/">All</Link>
+              <NavLink to="/" activeClassName="active" exact>
+                All
+              </NavLink>
             </li>
             {categories &&
               categories.map(category => (
                 <li key={category.path}>
-                  <Link to={`/${category.path}`}>
+                  <NavLink
+                    to={`/${category.path}`}
+                    activeClassName="active"
+                    exact
+                  >
                     {capitalize(category.name)}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
           </ul>
@@ -43,7 +49,9 @@ const mapDispatchToProps = dispatch => ({
   fetchData: () => dispatch(fetchCategories()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Header)
+);

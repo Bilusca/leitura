@@ -17,7 +17,16 @@ class PostList extends Component {
     const { posts } = this.props;
     return (
       <div className="post-list">
-        {posts && posts.map(post => <Post key={post.id} {...post} />)}
+        {posts.length ? (
+          posts.map(post => <Post key={post.id} {...post} />)
+        ) : (
+          <div className="no-posts">
+            We did not find any posts{' '}
+            <span role="img" aria-label="sad face emoji">
+              🙁
+            </span>
+          </div>
+        )}
       </div>
     );
   }

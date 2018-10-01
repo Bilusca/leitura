@@ -13,9 +13,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={PostList} />
               <Route
-                exact
                 path="/:category"
-                component={props => <PostList {...props} />}
+                component={history => <PostList {...history} />}
               />
             </Switch>
           </div>
