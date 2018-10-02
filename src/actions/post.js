@@ -1,4 +1,4 @@
-import { FETCH_POSTS, FETCH_POST_DETAIL } from '../reducers/types';
+import { FETCH_POSTS, FETCH_POST_DETAIL, FETCH_POSTS_BY_CATEGORY } from '../reducers/types';
 import { getAllPosts, getPostsByCategory, getPost } from '../utils/API';
 
 export const allPosts = posts => ({
@@ -6,7 +6,13 @@ export const allPosts = posts => ({
   posts,
 });
 
-export const post = post => ({
+export const postByCategory = (posts, category) => ({
+  type: FETCH_POSTS_BY_CATEGORY,
+  posts,
+  category,
+})
+
+export const postDetail = post => ({
   type: FETCH_POST_DETAIL,
   post,
 });
@@ -15,7 +21,7 @@ export const fetchAllPosts = () => dispatch =>
   getAllPosts().then(posts => dispatch(allPosts(posts)));
 
 export const fetchAllPostsByCategory = category => dispatch =>
-  getPostsByCategory(category).then(posts => dispatch(allPosts(posts)));
+  getPostsByCategory(category).then(posts => dispatch(postByCategory(posts, category)));
 
 export const fetchPostDetail = postId => dispatch =>
-  getPost(postId).then(post => dispatch(post(post)));
+  getPost(postId).then(post => dispatch(postDetail(post)));

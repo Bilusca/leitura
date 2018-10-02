@@ -15,10 +15,12 @@ class App extends Component {
               <Route exact path="/" component={PostList} />
               <Route
                 path="/:category"
+                exact
                 component={history => <PostList {...history} />}
               />
               <Route
                 path="/:category/:postId"
+                exact
                 component={history => <PostDetail {...history} />}
               />
             </Switch>

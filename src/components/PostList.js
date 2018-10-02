@@ -9,7 +9,7 @@ class PostList extends Component {
       const { match } = this.props;
       this.props.fetchPostsByCategory(match.params.category);
     } else {
-      this.props.fetchPosts();
+      this.props.fetchPosts()
     }
   }
 
@@ -32,8 +32,8 @@ class PostList extends Component {
   }
 }
 
-const mapStateToProps = ({ posts }) => ({
-  posts,
+const mapStateToProps = ({ postReducer }) => ({
+  posts: postReducer.postList.posts
 });
 
 const mapDispatchToProps = dispatch => ({

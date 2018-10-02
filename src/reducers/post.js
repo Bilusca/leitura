@@ -1,11 +1,37 @@
-import { FETCH_POSTS, FETCH_POST_DETAIL } from './types';
+import {
+  FETCH_POSTS,
+  FETCH_POSTS_BY_CATEGORY,
+  FETCH_POST_DETAIL,
+} from './types';
 
-export const postReducer = (state = [], action) => {
+const INITIAL_STATE = {
+  postList: { posts: [] },
+  activePost: { post: null },
+};
+
+export const postReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_POSTS:
-      return [...action.posts];
+      return {
+        ...state,
+        postList: {
+          posts: action.posts
+        }
+      };
+    case FETCH_POSTS_BY_CATEGORY:
+      return {
+        ...state,
+        postList: {
+          posts: action.posts
+        }
+      };
     case FETCH_POST_DETAIL:
-      return state;
+      return {
+        ...state,
+        activePost: {
+          post: action.post
+        }
+      };
     default:
       return state;
   }
