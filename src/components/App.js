@@ -18,7 +18,7 @@ class App extends Component {
                 component={history => <PostList {...history} />}
               />
               <Route
-                path="/posts/:postId"
+                path="/:category/:postId"
                 component={history => <PostDetail {...history} />}
               />
             </Switch>

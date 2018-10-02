@@ -25,7 +25,7 @@ const Post = ({
 }) => (
   <div className="post">
     <div className="post-header">
-      <Link to={`/posts/${id}`}>
+      <Link to={`/${category}/${id}`}>
         <h2>{title}</h2>
       </Link>
       <span>{moment(timestamp).format('MM/DD/YYYY')}</span>
