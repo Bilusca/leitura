@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { capitalize } from '../utils/capitalize';
 import {
   FiMessageCircle,
@@ -6,6 +6,7 @@ import {
   FiThumbsDown,
   FiUser,
 } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 function renderComentCount(count) {
@@ -13,6 +14,7 @@ function renderComentCount(count) {
 }
 
 const Post = ({
+  id,
   title,
   body,
   category,
@@ -21,35 +23,34 @@ const Post = ({
   voteScore,
   timestamp,
 }) => (
-  <Fragment>
-    <div className="post">
-      <div className="post-header">
+  <div className="post">
+    <div className="post-header">
+      <Link to={`/posts/${id}`}>
         <h2>{title}</h2>
-        <span>{moment(timestamp).format('MM/DD/YYYY')}</span>
-      </div>
-      <div className="post-body">
-        <span className="post-category">{capitalize(category)}</span>
-        <p>{body}</p>
-      </div>
-      <div className="post-footer">
-        <div>
-          <span className="comments">
-            <FiMessageCircle /> {renderComentCount(commentCount)}
-          </span>
-          <div className="votes">
-            <FiThumbsUp />
-            <span>{voteScore}</span>
-            <FiThumbsDown />
-          </div>
+      </Link>
+      <span>{moment(timestamp).format('MM/DD/YYYY')}</span>
+    </div>
+    <div className="post-body">
+      <span className="post-category">{capitalize(category)}</span>
+      <p>{body}</p>
+    </div>
+    <div className="post-footer">
+      <div>
+        <span className="comments">
+          <FiMessageCircle /> {renderComentCount(commentCount)}
+        </span>
+        <div className="votes">
+          <FiThumbsUp />
+          <span>{voteScore}</span>
+          <FiThumbsDown />
         </div>
-        <div className="author">
-          <FiUser />
-          {author}
-        </div>
+      </div>
+      <div className="author">
+        <FiUser />
+        {author}
       </div>
     </div>
-    {this.props.children}
-  </Fragment>
+  </div>
 );
 
 export default Post;

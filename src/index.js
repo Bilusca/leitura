@@ -8,12 +8,12 @@ import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './reducers';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
 
-const middleWare = []
+const middleWare = [];
 
-middleWare.push(thunk)
-middleWare.push(logger)
+middleWare.push(thunk);
+middleWare.push(logger);
 
 const store = createStore(rootReducer, applyMiddleware(...middleWare));
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import { Switch, Route } from 'react-router-dom';
 import PostList from './PostList';
+import PostDetail from './PostDetail';
 
 class App extends Component {
   render() {
@@ -15,6 +16,10 @@ class App extends Component {
               <Route
                 path="/:category"
                 component={history => <PostList {...history} />}
+              />
+              <Route
+                path="/posts/:postId"
+                component={history => <PostDetail {...history} />}
               />
             </Switch>
           </div>
