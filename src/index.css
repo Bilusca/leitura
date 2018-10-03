@@ -54,7 +54,13 @@ body {
   width: 100px;
   border-radius: 5px;
   text-align: center;
+  transition: 0.5s;
 }
+
+.app-header ul li a:hover {
+  background: #dfdfdf;
+}
+
 
 .app-header ul li a.active {
   background: #dfdfdf;
@@ -144,7 +150,7 @@ body {
 
 .post .post-body .post-category {
   display: inline-block;
-  max-width: 10%;
+  max-width: 100px;
   text-align: center;
   color: #fff;
   height: 20px;
@@ -222,6 +228,80 @@ body {
   width: 1.5em;
   height: 1.5em;
   margin-right: 5px;
+}
+
+.comment {
+  position: relative;
+  box-sizing: border-box;
+  padding-right: 10px;
+  width: 90%;
+  background: #fff;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  display: flex;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+
+.comment .comment-devider {
+  width: 5%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.comment .comment-devider .line {
+  width: 5px;
+  background: rgb(0, 120, 212);
+  height: 100%;
+  border-radius: 5px 0 0 5px; 
+}
+
+.comment .comment-info {
+  width: 95%;
+  box-sizing: border-box;
+  padding: 5px 0;
+}
+
+.comment .comment-info .comment-author {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 1px solid #dfdfdf;
+  padding-bottom: 5px;
+}
+
+.comment .comment-info .comment-author svg {
+  stroke: rgb(0, 120, 212);
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.comment .comment-info .comment-body {
+  font-size: 15px;
+  padding: 5px 0;
+  border-bottom: 1px solid #dfdfdf;
+  margin-bottom: 5px;
+}
+
+.comment .comment-footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.comment .comment-footer span {
+  margin: 0 10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.comment .comment-footer svg {
+  height: 1.5em;
+  width: 1.5em;
+  stroke: rgb(0, 120, 212);
 }
 
 .wrapper {

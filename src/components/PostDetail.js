@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Post from './Post';
 import { connect } from 'react-redux';
 import { fetchPostDetail, fetchCommentsById } from '../actions';
+import Comment from './Comment';
+import ReactLoading from 'react-loading';
 
 class PostDetail extends Component {
   componentWillMount() {
@@ -11,8 +13,19 @@ class PostDetail extends Component {
   }
 
   render() {
-    const { post } = this.props;
-    return !post ? <h1>TESTE</h1> : <div className="post-list"><Post {...post} /></div>;
+    const { post, comments } = this.props;
+    return (
+      <div className="post-list">
+        {post ? (
+          <Fragment>
+            <Post {...post}/>
+            {comments.map(commment => <Comment key={commment.id} {...commment} />)}
+          </Fragment>
+        ):(
+          <ReactLoading type="spin" color="#0078d4" />
+        )}
+      </div>
+    );
   }
 }
 
