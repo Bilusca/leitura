@@ -15,22 +15,22 @@ export const postReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         postList: {
-          posts: action.posts
-        }
+          posts: action.posts,
+        },
       };
     case FETCH_POSTS_BY_CATEGORY:
       return {
         ...state,
         postList: {
-          posts: action.posts
-        }
+          posts: action.posts,
+        },
       };
     case FETCH_POST_DETAIL:
       return {
         ...state,
         activePost: {
-          post: action.post
-        }
+          post: action.post,
+        },
       };
     default:
       return state;

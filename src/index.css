@@ -100,6 +100,38 @@ body {
   padding: 10px;
 }
 
+.post-list .post-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin-bottom: 15px;
+}
+
+.post-list .post-actions .order-selects {
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.post-list .post-actions .order-selects select {
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 5px;
+  border-bottom: 2px solid rgb(0, 120, 212);
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  background: #dfdfdf;
+  outline: none;
+  color: rgb(0, 120, 212);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.post-list .post-actions .order-selects .order-by {
+  margin-right: 10px;
+}
+
 .post {
   position: relative;
   box-sizing: border-box;
@@ -175,6 +207,10 @@ body {
 
 .post .post-footer .comments {
   width: 50px;
+}
+
+.post .post-footer .comments a {
+  text-decoration: none;
 }
 
 .post .post-footer .comments svg {

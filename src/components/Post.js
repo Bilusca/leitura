@@ -28,7 +28,7 @@ const Post = ({
       <Link to={`/${category}/${id}`}>
         <h2>{title}</h2>
       </Link>
-      <span>{moment(timestamp).format('MM/DD/YYYY')}</span>
+      <span>{moment(timestamp).format('DD/MM/YYYY')}</span>
     </div>
     <div className="post-body">
       <span className="post-category">{capitalize(category)}</span>
@@ -37,7 +37,9 @@ const Post = ({
     <div className="post-footer">
       <div>
         <span className="comments">
-          <FiMessageCircle /> {renderComentCount(commentCount)}
+          <Link to={`/${category}/${id}`} style={{ textDecoration: 'none' }}>
+            <FiMessageCircle /> {renderComentCount(commentCount)}
+          </Link>
         </span>
         <div className="votes">
           <FiThumbsUp />
