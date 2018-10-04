@@ -5,6 +5,7 @@ import { fetchPostDetail, fetchCommentsById } from '../actions';
 import Comment from './Comment';
 import ReactLoading from 'react-loading';
 import Filters from './Filters';
+import * as _ from 'lodash';
 
 class PostDetail extends Component {
   componentWillMount() {
@@ -14,7 +15,7 @@ class PostDetail extends Component {
   }
 
   render() {
-    const { post, comments } = this.props;
+    const { post, comments, selectedOrder, order } = this.props;
     return (
       <div className="post-list">
         <div className="post-actions">
@@ -24,7 +25,7 @@ class PostDetail extends Component {
         {post ? (
           <Fragment>
             <Post {...post} />
-            {comments.map(commment => (
+            {_.orderBy(comments, [selectedOrder], [order]).map(commment => (
               <Comment key={commment.id} {...commment} />
             ))}
           </Fragment>
@@ -36,10 +37,16 @@ class PostDetail extends Component {
   }
 }
 
-const mapStateToProps = ({ postReducer, commentReducer }) => ({
-  post: postReducer.activePost.post,
-  comments: commentReducer.commentList.comments,
-});
+const mapStateToProps = ({ postReducer, commentReducer, filterReducer }) => {
+  const commentFilters = filterReducer.orderLists['comment'];
+
+  return {
+    post: postReducer.activePost.post,
+    comments: commentReducer.commentList.comments,
+    order: commentFilters.order,
+    selectedOrder: commentFilters.selectedOrder,
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchPostDetail: postId => dispatch(fetchPostDetail(postId)),

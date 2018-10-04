@@ -43,8 +43,6 @@ const INITIAL_STATE = {
       order: null,
     },
   },
-  selectedOrder: null,
-  order: null,
   typeOfFilter: null,
 };
 
@@ -60,16 +58,12 @@ export const filterReducer = (state = INITIAL_STATE, action) => {
             selectedOrder: action.selectedOrder,
             order: action.order,
           },
-        },
-        selectedOrder: action.selectedOrder,
-        order: action.order,
+        }
       };
     case CHANGE_TYPE_OF_FILTER:
       if (state.typeOfFilter !== action.typeOfFilter) {
         return {
           ...state,
-          selectedOrder: state.orderLists[action.typeOfFilter].selectedOrder,
-          order: state.orderLists[action.typeOfFilter].order,
           typeOfFilter: action.typeOfFilter,
         };
       }

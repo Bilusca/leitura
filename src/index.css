@@ -345,6 +345,29 @@ body {
   min-width: 85%;
 }
 
+.overlay {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(223, 223, 223, 0.75);
+}
+
+.modal {
+  border: 1px solid rgb(223, 223, 223);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 5px;
+  outline: none;
+  padding: 20px;
+  box-shadow: 0 3px 8px 0 rgba(0,0,0,.24), 0 3px 12px 0 rgba(0,0,0,.12);
+  min-width: 50%;
+}
+
 @media screen and (max-width: 450px) {
   .wrapper {
     max-width: 90%;
