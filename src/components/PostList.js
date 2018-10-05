@@ -44,7 +44,14 @@ class PostList extends Component {
           isOpen={true}
           contentLabel="Modal"
         >
-          Aqui
+          <form>
+            <div className="">
+              <input />
+              <input />
+              <textarea></textarea>
+              <select></select>
+            </div>
+          </form>
         </Modal>
       </Fragment>
     );
