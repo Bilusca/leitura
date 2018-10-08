@@ -8,6 +8,10 @@ import * as _ from 'lodash';
 import FormPost from './FormPost';
 
 class PostList extends Component {
+  state = {
+    openPostModal: false,
+  };
+
   componentDidMount() {
     if (this.props.match.path !== '/') {
       const { match } = this.props;
@@ -19,12 +23,13 @@ class PostList extends Component {
 
   render() {
     const { posts, selectedOrder, order } = this.props;
+    const { openPostModal } = this.state;
     return (
       <Fragment>
         <div className="post-list">
           <div className="post-actions">
             <Filters type="post" />
-            <div>New Post</div>
+            <button onClick={() => this.setState({openPostModal: true})}>New Post</button>
           </div>
           {posts.length ? (
             _.orderBy(posts, [selectedOrder], [order]).map(post => (
@@ -42,10 +47,11 @@ class PostList extends Component {
         <Modal
           className="modal"
           overlayClassName="overlay"
-          isOpen={true}
+          isOpen={openPostModal}
           contentLabel="Modal"
           ariaHideApp={false}
         >
+          <button onClick={() => this.setState({openPostModal: false})}>Close</button>
           <FormPost />
         </Modal>
       </Fragment>
