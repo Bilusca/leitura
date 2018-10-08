@@ -5,6 +5,7 @@ import Post from './Post';
 import Filters from './Filters';
 import Modal from 'react-modal';
 import * as _ from 'lodash';
+import FormPost from './FormPost';
 
 class PostList extends Component {
   componentDidMount() {
@@ -43,15 +44,9 @@ class PostList extends Component {
           overlayClassName="overlay"
           isOpen={true}
           contentLabel="Modal"
+          ariaHideApp={false}
         >
-          <form>
-            <div className="">
-              <input />
-              <input />
-              <textarea></textarea>
-              <select></select>
-            </div>
-          </form>
+          <FormPost />
         </Modal>
       </Fragment>
     );

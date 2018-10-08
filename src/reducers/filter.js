@@ -58,7 +58,7 @@ export const filterReducer = (state = INITIAL_STATE, action) => {
             selectedOrder: action.selectedOrder,
             order: action.order,
           },
-        }
+        },
       };
     case CHANGE_TYPE_OF_FILTER:
       if (state.typeOfFilter !== action.typeOfFilter) {

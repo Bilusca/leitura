@@ -340,6 +340,61 @@ body {
   stroke: rgb(0, 120, 212);
 }
 
+.form-post div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-post div input,
+.form-post div select,
+.form-post div textarea {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.form-post div input, 
+.form-post div textarea {
+  padding: 10px 0px;
+  font-size: 18px;
+  border: none;
+  border-bottom: 2px solid rgb(0, 120, 212);
+  outline: none;
+}
+
+.form-post div textarea {
+  resize: none;
+}
+
+.form-post div input::placeholder,
+.form-post div textarea::placeholder {
+  font-style: italic;
+  color: #a7a7a7;
+}
+
+.form-post div select {
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+  border-bottom: 2px solid rgb(0, 120, 212);
+  box-sizing: border-box;
+  padding: 9px 5px;
+  font-size: 18px;
+  color: rgb(0, 120, 212);
+}
+
+.form-post div .user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-post div .user input {
+  margin-right: 30px;
+}
+
 .wrapper {
   max-width: 85%;
   min-width: 85%;
