@@ -1,6 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { fetchAllPosts, fetchAllPostsByCategory } from '../actions';
+import {
+  fetchAllPosts,
+  fetchAllPostsByCategory,
+  changePostModalState,
+} from '../actions';
 import Post from './Post';
 import Filters from './Filters';
 import Modal from 'react-modal';
@@ -8,10 +12,6 @@ import * as _ from 'lodash';
 import FormPost from './FormPost';
 
 class PostList extends Component {
-  state = {
-    openPostModal: false,
-  };
-
   componentDidMount() {
     if (this.props.match.path !== '/') {
       const { match } = this.props;
@@ -22,14 +22,19 @@ class PostList extends Component {
   }
 
   render() {
-    const { posts, selectedOrder, order } = this.props;
-    const { openPostModal } = this.state;
+    const {
+      posts,
+      selectedOrder,
+      order,
+      postModalState,
+      changePostModalState,
+    } = this.props;
     return (
       <Fragment>
         <div className="post-list">
           <div className="post-actions">
             <Filters type="post" />
-            <button onClick={() => this.setState({openPostModal: true})}>New Post</button>
+            <button onClick={() => changePostModalState(true)}>New Post</button>
           </div>
           {posts.length ? (
             _.orderBy(posts, [selectedOrder], [order]).map(post => (
@@ -47,11 +52,10 @@ class PostList extends Component {
         <Modal
           className="modal"
           overlayClassName="overlay"
-          isOpen={openPostModal}
+          isOpen={postModalState}
           contentLabel="Modal"
           ariaHideApp={false}
         >
-          <button onClick={() => this.setState({openPostModal: false})}>Close</button>
           <FormPost />
         </Modal>
       </Fragment>
@@ -66,12 +70,14 @@ const mapStateToProps = ({ postReducer, filterReducer }) => {
     posts: postReducer.postList.posts,
     selectedOrder: postFilters.selectedOrder,
     order: postFilters.order,
+    postModalState: postReducer.postModalState,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   fetchPosts: () => dispatch(fetchAllPosts()),
   fetchPostsByCategory: category => dispatch(fetchAllPostsByCategory(category)),
+  changePostModalState: bool => dispatch(changePostModalState(bool)),
 });
 
 export default connect(

@@ -2,6 +2,7 @@ import {
   FETCH_POSTS,
   FETCH_POST_DETAIL,
   FETCH_POSTS_BY_CATEGORY,
+  POST_MODAL_STATE,
 } from '../reducers/types';
 import { getAllPosts, getPostsByCategory, getPost } from '../utils/API';
 
@@ -19,6 +20,11 @@ export const postByCategory = (posts, category) => ({
 export const postDetail = post => ({
   type: FETCH_POST_DETAIL,
   post,
+});
+
+export const changePostModalState = bool => ({
+  type: POST_MODAL_STATE,
+  bool,
 });
 
 export const fetchAllPosts = () => dispatch =>

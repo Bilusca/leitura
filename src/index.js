@@ -15,7 +15,7 @@ const middleWare = [];
 middleWare.push(thunk);
 middleWare.push(logger);
 
-const store = createStore(rootReducer, applyMiddleware(...middleWare));
+export const store = createStore(rootReducer, applyMiddleware(...middleWare));
 
 ReactDOM.render(
   <Provider store={store}>
