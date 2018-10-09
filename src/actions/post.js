@@ -3,8 +3,9 @@ import {
   FETCH_POST_DETAIL,
   FETCH_POSTS_BY_CATEGORY,
   POST_MODAL_STATE,
+  CREATE_POST,
 } from '../reducers/types';
-import { getAllPosts, getPostsByCategory, getPost } from '../utils/API';
+import { getAllPosts, getPostsByCategory, getPost, savePost } from '../utils/API';
 
 export const allPosts = posts => ({
   type: FETCH_POSTS,
@@ -27,6 +28,11 @@ export const changePostModalState = bool => ({
   bool,
 });
 
+export const savePostState = payload => ({
+  type: CREATE_POST,
+  payload
+})
+
 export const fetchAllPosts = () => dispatch =>
   getAllPosts().then(posts => dispatch(allPosts(posts)));
 
@@ -37,3 +43,6 @@ export const fetchAllPostsByCategory = category => dispatch =>
 
 export const fetchPostDetail = postId => dispatch =>
   getPost(postId).then(post => dispatch(postDetail(post)));
+
+export const savePostApi = post => dispatch =>
+    savePost(post).then(payload => dispatch(savePostState(payload)))

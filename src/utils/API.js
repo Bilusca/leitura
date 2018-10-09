@@ -35,3 +35,12 @@ export const getComments = postId =>
   fetch(`${api}/posts/${postId}/comments`, { headers })
     .then(res => res.json())
     .then(data => data);
+
+export const savePost = post =>
+  fetch(`${api}/posts`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(post),
+  })
+    .then(res => res.json())
+    .then(data => data);
