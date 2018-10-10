@@ -7,7 +7,7 @@ if (!token)
     .substr(-8);
 
 const headers = {
-  Accept: 'aplication/json',
+  'Content-Type': 'application/json',
   Authorization: token,
 };
 
@@ -36,11 +36,16 @@ export const getComments = postId =>
     .then(res => res.json())
     .then(data => data);
 
-export const savePost = post =>
-  fetch(`${api}/posts`, {
+export const savePost = post => {
+  return fetch(`${api}/posts`, {
     method: 'POST',
-    headers,
+    headers: headers,
     body: JSON.stringify(post),
   })
-    .then(res => res.json())
-    .then(data => data);
+    .then(res => {
+      console.dir(res);
+      return res.json();
+    })
+    .then(data => data)
+    .catch(err => console.dir(err));
+};

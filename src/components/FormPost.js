@@ -23,9 +23,9 @@ class FormPost extends Component {
       hash: true,
     });
 
-    console.dir(values);
     this.props.changePostModalState(false);
-    this.props.savePostApi(this.state);
+    values.timestamp = parseFloat(values.timestamp);
+    this.props.savePostApi(values);
   };
 
   handleChange = (prop, e) => {
@@ -51,7 +51,8 @@ class FormPost extends Component {
           >
             <FiX />
           </button>
-          <input type="hidden" name="id" />
+          <input type="hidden" name="id" value={this.state.id} />
+          <input type="hidden" name="timestamp" value={this.state.timestamp} />
           <input
             placeholder="Title of Post"
             name="title"

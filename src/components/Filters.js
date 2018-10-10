@@ -15,7 +15,9 @@ class Filters extends Component {
         <div className="order-by">
           Order {`${type.toUpperCase()}S`} by:
           <select
-            onChange={e => orderBy(type, e.target.value, orderLists[type].order)}
+            onChange={e =>
+              orderBy(type, e.target.value, orderLists[type].order)
+            }
             defaultValue={orderLists[type].selectedOrder || 'null'}
           >
             <option value="">None</option>
@@ -31,7 +33,9 @@ class Filters extends Component {
         Order:
         <div className="order">
           <select
-            onChange={e => orderBy(type, orderLists[type].selectedOrder, e.target.value)}
+            onChange={e =>
+              orderBy(type, orderLists[type].selectedOrder, e.target.value)
+            }
             defaultValue={orderLists[type].order || 'null'}
           >
             <option value="">None</option>
