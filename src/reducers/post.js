@@ -4,6 +4,7 @@ import {
   FETCH_POST_DETAIL,
   POST_MODAL_STATE,
   CREATE_POST,
+  VOTE_POST,
 } from './types';
 
 const INITIAL_STATE = {
@@ -47,6 +48,16 @@ export const postReducer = (state = INITIAL_STATE, action) => {
           posts: [...state.postList.posts, action.payload],
         },
       };
+    case VOTE_POST:
+      
+      return {
+        ...state,
+        postList: {
+          posts: [
+            ...state.postList.posts,
+          ]
+        }
+      }
     default:
       return state;
   }

@@ -42,10 +42,17 @@ export const savePost = post => {
     headers: headers,
     body: JSON.stringify(post),
   })
-    .then(res => {
-      console.dir(res);
-      return res.json();
-    })
+    .then(res => res.json())
     .then(data => data)
     .catch(err => console.dir(err));
 };
+
+export const voteForPost = (id, option) =>
+  fetch(`${api}/posts/${id}`, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify( {option} ),
+  })
+    .then(res => res.json())
+    .then(data => data)
+    .catch(err => console.dir(err));

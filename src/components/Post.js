@@ -8,6 +8,8 @@ import {
 } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { votePost } from '../actions';
+import { connect } from 'react-redux';
 
 function renderComentCount(count) {
   return count !== 0 ? <span className="count">{count}</span> : '';
@@ -22,6 +24,7 @@ const Post = ({
   commentCount,
   voteScore,
   timestamp,
+  votePost
 }) => (
   <div className="post">
     <div className="post-header">
@@ -42,9 +45,9 @@ const Post = ({
           </Link>
         </span>
         <div className="votes">
-          <FiThumbsUp />
+          <FiThumbsUp onClick={() => votePost(id, 'upVote')} />
           <span>{voteScore}</span>
-          <FiThumbsDown />
+          <FiThumbsDown onClick={() => votePost(id, 'downVote')} />
         </div>
       </div>
       <div className="author">
@@ -55,4 +58,11 @@ const Post = ({
   </div>
 );
 
-export default Post;
+const mapDispatchToProps = dispatch => ({
+  votePost: (id, vote) => dispatch(votePost(id, vote)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Post);

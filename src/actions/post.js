@@ -4,12 +4,14 @@ import {
   FETCH_POSTS_BY_CATEGORY,
   POST_MODAL_STATE,
   CREATE_POST,
+  VOTE_POST,
 } from '../reducers/types';
 import {
   getAllPosts,
   getPostsByCategory,
   getPost,
   savePost,
+  voteForPost,
 } from '../utils/API';
 
 export const allPosts = posts => ({
@@ -38,6 +40,12 @@ export const savePostState = payload => ({
   payload,
 });
 
+export const postVoteState = (id, payload) => ({
+  type: VOTE_POST,
+  id,
+  payload,
+});
+
 export const fetchAllPosts = () => dispatch =>
   getAllPosts().then(posts => dispatch(allPosts(posts)));
 
@@ -49,9 +57,10 @@ export const fetchAllPostsByCategory = category => dispatch =>
 export const fetchPostDetail = postId => dispatch =>
   getPost(postId).then(post => dispatch(postDetail(post)));
 
-export const savePostApi = (post) => dispatch =>
+export const savePostApi = post => dispatch =>
   savePost(post)
     .then(payload => dispatch(savePostState(payload)))
     .catch(error => console.log(error));
 
-// export const postVote = (id, vote) => dispatch => 
+export const votePost = (id, vote) => dispatch =>
+  voteForPost(id, vote).then(payload => dispatch(postVoteState(id, payload)));

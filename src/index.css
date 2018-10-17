@@ -21,7 +21,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
 }
 
 .app-header h1 {
@@ -82,7 +82,7 @@ body {
   background: #fff;
   border: 1px solid #dfdfdf;
   border-radius: 5px;
-  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.5);
   margin-bottom: 15px;
   color: rgb(0, 120, 212);
   font-family: 'Anton', sans-serif;
@@ -152,7 +152,7 @@ body {
   background: #fff;
   border: 1px solid #dfdfdf;
   border-radius: 5px;
-  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.5);
   margin-bottom: 15px;
 }
 
@@ -229,6 +229,7 @@ body {
   height: 1.6em;
   width: 1.6em;
   stroke: rgb(0, 120, 212);
+  cursor: pointer;
 }
 
 .post .post-footer .comments .count {
@@ -284,7 +285,7 @@ body {
   padding-right: 10px;
   width: 90%;
   background: #fff;
-  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.5);
   display: flex;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -458,7 +459,7 @@ body {
   border-radius: 5px;
   outline: none;
   padding: 20px;
-  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.24), 0 3px 12px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.24), 0 3px 12px 0 rgba(0, 0, 0, 0.12);
   min-width: 50%;
 }
 
