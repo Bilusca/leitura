@@ -5,6 +5,7 @@ import {
   FiThumbsUp,
   FiThumbsDown,
   FiUser,
+  FiTrash2
 } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
@@ -31,7 +32,15 @@ const Post = ({
       <Link to={`/${category}/${id}`}>
         <h2>{title}</h2>
       </Link>
-      <span>{moment(timestamp).format('DD/MM/YYYY')}</span>
+      <span>
+        {moment(timestamp).format('DD/MM/YYYY')}
+        <button className="edit">
+          <FiTrash2 />
+        </button>
+        <button className="remove">
+          <FiTrash2 />
+        </button>
+      </span>
     </div>
     <div className="post-body">
       <span className="post-category">{capitalize(category)}</span>

@@ -171,6 +171,22 @@ body {
   text-decoration: none;
 }
 
+.post .post-header span button {
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 7px 10px;
+  background: rgb(239, 83, 80);
+  cursor: pointer
+}
+
+.post .post-header span button svg {
+  stroke: #fff;
+  width: 17px;
+  height: 17px;
+}
+
 .post .post-header h2 {
   font-weight: 600;
   color: rgb(0, 120, 212);
@@ -263,6 +279,7 @@ body {
   width: 1.5em;
   height: 1.5em;
   stroke: rgb(0, 120, 212);
+  cursor: pointer;
 }
 
 .post .post-footer .author {

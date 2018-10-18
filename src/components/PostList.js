@@ -36,7 +36,7 @@ class PostList extends Component {
             <Filters type="post" />
             <button onClick={() => changePostModalState(true)}>New Post</button>
           </div>
-          {posts.length ? (
+          {posts && posts.length ? (
             _.orderBy(posts, [selectedOrder], [order]).map(post => (
               <Post key={post.id} {...post} />
             ))
