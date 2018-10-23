@@ -5,6 +5,7 @@ import {
   POST_MODAL_STATE,
   CREATE_POST,
   VOTE_POST,
+  DELETE_POST,
 } from '../reducers/types';
 import {
   getAllPosts,
@@ -12,6 +13,7 @@ import {
   getPost,
   savePost,
   voteForPost,
+  deletePostApi
 } from '../utils/API';
 
 export const allPosts = posts => ({
@@ -46,6 +48,12 @@ export const postVoteState = (id, payload) => ({
   payload,
 });
 
+export const deletePostState = (id, payload) => ({
+  type: DELETE_POST,
+  id,
+  payload
+})
+
 export const fetchAllPosts = () => dispatch =>
   getAllPosts().then(posts => dispatch(allPosts(posts)));
 
@@ -64,3 +72,6 @@ export const savePostApi = post => dispatch =>
 
 export const votePost = (id, vote) => dispatch =>
   voteForPost(id, vote).then(payload => dispatch(postVoteState(id, payload)));
+
+export const deletePost = (id) => dispatch => 
+  deletePostApi(id).then(payload => dispatch(deletePostState(id, payload)))

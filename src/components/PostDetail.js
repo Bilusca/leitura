@@ -20,7 +20,7 @@ class PostDetail extends Component {
       <div className="post-list">
         <div className="post-actions">
           <Filters type="comment" />
-          <div>New Post</div>
+          <button>New Comment</button>
         </div>
         {post ? (
           <Fragment>

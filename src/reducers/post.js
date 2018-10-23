@@ -5,6 +5,7 @@ import {
   POST_MODAL_STATE,
   CREATE_POST,
   VOTE_POST,
+  DELETE_POST,
 } from './types';
 
 const INITIAL_STATE = {
@@ -16,6 +17,7 @@ const INITIAL_STATE = {
 
 export const postReducer = (state = INITIAL_STATE, action) => {
   const { postList, activePost, activeCategory } = state;
+  const { id } = action
 
   switch (action.type) {
     case FETCH_POSTS:
@@ -114,6 +116,13 @@ export const postReducer = (state = INITIAL_STATE, action) => {
           post: null,
         },
       };
+    case DELETE_POST:
+      return {
+        ...state,
+        postList: {
+          posts: postList.posts.filter(post => post.id !== id)
+        }
+      }
     default:
       return state;
   }

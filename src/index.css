@@ -177,8 +177,15 @@ body {
   border: none;
   outline: none;
   padding: 7px 10px;
-  background: rgb(239, 83, 80);
   cursor: pointer
+}
+
+button.remove {
+  background: rgb(239, 83, 80);
+}
+
+button.edit {
+  background: rgb(0, 120, 212);
 }
 
 .post .post-header span button svg {
@@ -331,11 +338,36 @@ body {
 .comment .comment-info .comment-author {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   font-size: 16px;
   font-weight: 600;
   border-bottom: 1px solid #dfdfdf;
   padding-bottom: 5px;
+}
+
+.comment .comment-info .comment-author div {
+  display: flex;
+  align-items: center;
+}
+
+.comment .comment-info .comment-author .timestamp {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.comment .comment-info .comment-author .timestamp button {
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 5px 7px;
+  cursor: pointer
+}
+
+.comment .comment-info .comment-author .timestamp button svg {
+  stroke: #fff;
+  width: 14px;
+  height: 14px;
 }
 
 .comment .comment-info .comment-author svg {

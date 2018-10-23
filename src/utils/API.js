@@ -51,7 +51,16 @@ export const voteForPost = (id, option) =>
   fetch(`${api}/posts/${id}`, {
     method: 'POST',
     headers: headers,
-    body: JSON.stringify( {option} ),
+    body: JSON.stringify({ option }),
+  })
+    .then(res => res.json())
+    .then(data => data)
+    .catch(err => console.dir(err));
+
+export const deletePostApi = id =>
+  fetch(`${api}/posts/${id}`, {
+    method: 'DELETE',
+    headers: headers,
   })
     .then(res => res.json())
     .then(data => data)
