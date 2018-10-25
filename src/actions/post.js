@@ -13,7 +13,7 @@ import {
   getPost,
   savePost,
   voteForPost,
-  deletePostApi
+  deletePostApi,
 } from '../utils/API';
 
 export const allPosts = posts => ({
@@ -51,8 +51,8 @@ export const postVoteState = (id, payload) => ({
 export const deletePostState = (id, payload) => ({
   type: DELETE_POST,
   id,
-  payload
-})
+  payload,
+});
 
 export const fetchAllPosts = () => dispatch =>
   getAllPosts().then(posts => dispatch(allPosts(posts)));
@@ -63,8 +63,9 @@ export const fetchAllPostsByCategory = category => dispatch =>
   );
 
 export const fetchPostDetail = postId => dispatch =>
-  getPost(postId).then(post => dispatch(postDetail(post)))
-  .catch(err => console.log(err));
+  getPost(postId)
+    .then(post => dispatch(postDetail(post)))
+    .catch(err => console.log(err));
 
 export const savePostApi = post => dispatch =>
   savePost(post)
@@ -74,5 +75,5 @@ export const savePostApi = post => dispatch =>
 export const votePost = (id, vote) => dispatch =>
   voteForPost(id, vote).then(payload => dispatch(postVoteState(id, payload)));
 
-export const deletePost = (id) => dispatch => 
-  deletePostApi(id).then(payload => dispatch(deletePostState(id, payload)))
+export const deletePost = id => dispatch =>
+  deletePostApi(id).then(payload => dispatch(deletePostState(id, payload)));

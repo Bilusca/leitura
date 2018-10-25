@@ -31,11 +31,6 @@ export const getPost = postId =>
     .then(res => res.json())
     .then(data => data);
 
-export const getComments = postId =>
-  fetch(`${api}/posts/${postId}/comments`, { headers })
-    .then(res => res.json())
-    .then(data => data);
-
 export const savePost = post => {
   return fetch(`${api}/posts`, {
     method: 'POST',
@@ -66,6 +61,16 @@ export const deletePostApi = id =>
     .then(data => data)
     .catch(err => console.dir(err));
 
+export const getComments = postId =>
+  fetch(`${api}/posts/${postId}/comments`, { headers })
+    .then(res => res.json())
+    .then(data => data);
+
+export const getCommentById = id =>
+  fetch(`${api}/comments/${id}`)
+    .then(res => res.json())
+    .then(data => data);
+
 export const createCommentApi = comment =>
   fetch(`${api}/comments`, {
     method: 'POST',
@@ -90,6 +95,16 @@ export const deleteCommentApi = id =>
   fetch(`${api}/comments/${id}`, {
     method: 'DELETE',
     headers: headers,
+  })
+    .then(res => res.json())
+    .then(data => data)
+    .catch(err => console.dir(err));
+
+export const editComentApi = (id, body, timestamp) =>
+  fetch(`${api}/comments/${id}`, {
+    method: 'PUT',
+    headers: headers,
+    body: JSON.stringify({ body, timestamp }),
   })
     .then(res => res.json())
     .then(data => data)

@@ -71,12 +71,16 @@ class FormPost extends Component {
   }
 }
 
+const mapStateToProps = ({ commentReducer }) => ({
+  editableComment: commentReducer.editableComment,
+})
+
 const mapDispatchToProps = dispatch => ({
   changeCommentModalState: bool => dispatch(changeCommentModalState(bool)),
   createCommentInApi: comment => dispatch(createCommentInApi(comment)),
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(FormPost);
