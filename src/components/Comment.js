@@ -1,8 +1,10 @@
 import React from 'react';
 import { FiThumbsUp, FiThumbsDown, FiUser, FiEdit, FiTrash2 } from 'react-icons/fi';
+import { voteComment, deleteComment } from '../actions';
+import { connect } from 'react-redux';
 import moment from 'moment';
 
-const Comment = ({ author, body, voteScore, timestamp }) => (
+const Comment = ({ author, body, voteScore, timestamp, id, voteComment, deleteComment }) => (
   <div className="comment">
     <div className="comment-devider">
       <div className="line" />
@@ -15,19 +17,24 @@ const Comment = ({ author, body, voteScore, timestamp }) => (
           <button className="edit">
             <FiEdit />
           </button>        
-          <button className="remove">
+          <button className="remove" onClick={() => deleteComment(id)}>
             <FiTrash2 />  
           </button>        
         </div>
       </div>
       <div className="comment-body">{body}</div>
       <div className="comment-footer">
-        <FiThumbsUp />
+        <FiThumbsUp onClick={() => voteComment('upVote', id)} />
         <span>{voteScore}</span>
-        <FiThumbsDown />
+        <FiThumbsDown onClick={() => voteComment('downVote', id)} />
       </div>
     </div>
   </div>
 );
 
-export default Comment;
+const mapDispatchToProps = dispatch => ({
+  voteComment: (option, id) => dispatch(voteComment(option, id)),
+  deleteComment: id => dispatch(deleteComment(id))
+})
+
+export default connect(null, mapDispatchToProps)(Comment);

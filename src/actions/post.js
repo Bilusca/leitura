@@ -63,7 +63,8 @@ export const fetchAllPostsByCategory = category => dispatch =>
   );
 
 export const fetchPostDetail = postId => dispatch =>
-  getPost(postId).then(post => dispatch(postDetail(post)));
+  getPost(postId).then(post => dispatch(postDetail(post)))
+  .catch(err => console.log(err));
 
 export const savePostApi = post => dispatch =>
   savePost(post)

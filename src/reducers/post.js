@@ -43,6 +43,15 @@ export const postReducer = (state = INITIAL_STATE, action) => {
         activeCategory: action.category,
       };
     case FETCH_POST_DETAIL:
+      if (!Object.keys(action.post).length) {
+        return {
+          ...state,
+          activePost: {
+            post: null,
+          },
+        };
+      }
+
       return {
         ...state,
         activePost: {
@@ -121,6 +130,9 @@ export const postReducer = (state = INITIAL_STATE, action) => {
         ...state,
         postList: {
           posts: postList.posts.filter(post => post.id !== id)
+        },
+        activePost: {
+          post: null
         }
       }
     default:
