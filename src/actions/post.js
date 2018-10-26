@@ -6,6 +6,7 @@ import {
   CREATE_POST,
   VOTE_POST,
   DELETE_POST,
+  EDIT_POST,
 } from '../reducers/types';
 import {
   getAllPosts,
@@ -14,6 +15,7 @@ import {
   savePost,
   voteForPost,
   deletePostApi,
+  editPostApi,
 } from '../utils/API';
 
 export const allPosts = posts => ({
@@ -32,15 +34,22 @@ export const postDetail = post => ({
   post,
 });
 
-export const changePostModalState = bool => ({
+export const changePostModalState = (bool, editablePost = {}) => ({
   type: POST_MODAL_STATE,
   bool,
+  editablePost
 });
 
 export const savePostState = payload => ({
   type: CREATE_POST,
   payload,
 });
+
+export const editPostState = (id, payload) => ({
+  type: EDIT_POST,
+  id,
+  payload,
+})
 
 export const postVoteState = (id, payload) => ({
   type: VOTE_POST,
@@ -72,8 +81,12 @@ export const savePostApi = post => dispatch =>
     .then(payload => dispatch(savePostState(payload)))
     .catch(error => console.log(error));
 
+export const editPost = (id, title, body) => dispatch =>
+    editPostApi(id, title, body).then(payload => dispatch(editPostState(id, payload)))
+
 export const votePost = (id, vote) => dispatch =>
   voteForPost(id, vote).then(payload => dispatch(postVoteState(id, payload)));
 
 export const deletePost = id => dispatch =>
   deletePostApi(id).then(payload => dispatch(deletePostState(id, payload)));
+

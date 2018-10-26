@@ -6,6 +6,7 @@ import {
   CREATE_POST,
   VOTE_POST,
   DELETE_POST,
+  EDIT_POST,
 } from './types';
 
 const INITIAL_STATE = {
@@ -13,11 +14,12 @@ const INITIAL_STATE = {
   activePost: { post: null },
   postModalState: false,
   activeCategory: null,
+  editablePost: {},
 };
 
 export const postReducer = (state = INITIAL_STATE, action) => {
   const { postList, activePost, activeCategory } = state;
-  const { id } = action
+  const { id } = action;
 
   switch (action.type) {
     case FETCH_POSTS:
@@ -62,13 +64,11 @@ export const postReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         postModalState: action.bool,
-        activePost: {
-          post: null,
-        },
+        editablePost: action.editablePost,
       };
     case CREATE_POST:
-      if (activeCategory ) {
-        if(activeCategory === action.payload.category) {
+      if (activeCategory) {
+        if (activeCategory === action.payload.category) {
           return {
             ...state,
             postList: {
@@ -100,6 +100,37 @@ export const postReducer = (state = INITIAL_STATE, action) => {
           post: null,
         },
       };
+    case EDIT_POST:
+      if (activePost) {
+        return {
+          ...state,
+          activePost: {
+            post: action.payload,
+          },
+          postList: {
+            posts: postList.posts.map(post => {
+              if (post.id === id) {
+                post = action.payload;
+              }
+
+              return post;
+            }),
+          },
+        };
+      }
+
+      return {
+        ...state,
+        postList: {
+          posts: postList.posts.map(post => {
+            if (post.id === id) {
+              post = action.payload;
+            }
+
+            return post;
+          }),
+        },
+      };
     case VOTE_POST:
       if (activePost.post) {
         return {
@@ -129,12 +160,12 @@ export const postReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         postList: {
-          posts: postList.posts.filter(post => post.id !== id)
+          posts: postList.posts.filter(post => post.id !== id),
         },
         activePost: {
-          post: null
-        }
-      }
+          post: null,
+        },
+      };
     default:
       return state;
   }

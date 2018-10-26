@@ -6,11 +6,11 @@ import {
   FiThumbsDown,
   FiUser,
   FiTrash2,
-  FiEdit
+  FiEdit,
 } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { votePost, deletePost } from '../actions';
+import { votePost, deletePost, changePostModalState } from '../actions';
 import { connect } from 'react-redux';
 
 function renderComentCount(count) {
@@ -27,7 +27,8 @@ const Post = ({
   voteScore,
   timestamp,
   votePost,
-  deletePost
+  deletePost,
+  changePostModalState,
 }) => (
   <div className="post">
     <div className="post-header">
@@ -36,7 +37,19 @@ const Post = ({
       </Link>
       <span>
         {moment(timestamp).format('DD/MM/YYYY')}
-        <button className="edit">
+        <button
+          className="edit"
+          onClick={() =>
+            changePostModalState(true, {
+              id,
+              title,
+              body,
+              author,
+              category,
+              timestamp,
+            })
+          }
+        >
           <FiEdit />
         </button>
         <button className="remove" onClick={() => deletePost(id)}>
@@ -71,7 +84,9 @@ const Post = ({
 
 const mapDispatchToProps = dispatch => ({
   votePost: (id, vote) => dispatch(votePost(id, vote)),
-  deletePost: (id) => dispatch(deletePost(id))
+  deletePost: id => dispatch(deletePost(id)),
+  changePostModalState: (bool, editable) =>
+    dispatch(changePostModalState(bool, editable)),
 });
 
 export default connect(

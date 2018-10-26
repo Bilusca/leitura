@@ -10,6 +10,7 @@ import Comment from './Comment';
 import Filters from './Filters';
 import * as _ from 'lodash';
 import FormComment from './FormComment';
+import FormPost from './FormPost';
 import Modal from 'react-modal';
 
 class PostDetail extends Component {
@@ -27,6 +28,7 @@ class PostDetail extends Component {
       order,
       commentModalState,
       changeCommentModalState,
+      postModalState,
     } = this.props;
     return (
       <div className="post-list">
@@ -51,6 +53,8 @@ class PostDetail extends Component {
             >
               <FormComment parentId={post.id} />
             </Modal>
+            
+            
           </Fragment>
         ) : (
           <div className="no-posts">
@@ -60,6 +64,15 @@ class PostDetail extends Component {
             </span>
           </div>
         )}
+        <Modal
+              className="modal"
+              overlayClassName="overlay"
+              isOpen={postModalState}
+              contentLabel="Modal"
+              ariaHideApp={false}
+            >
+              <FormPost />
+            </Modal>
       </div>
     );
   }
@@ -74,6 +87,7 @@ const mapStateToProps = ({ postReducer, commentReducer, filterReducer }) => {
     order: commentFilters.order,
     selectedOrder: commentFilters.selectedOrder,
     commentModalState: commentReducer.commentModalState,
+    postModalState: postReducer.postModalState,
   };
 };
 

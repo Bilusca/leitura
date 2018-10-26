@@ -60,4 +60,4 @@ export const deleteComment = id => dispatch =>
   deleteCommentApi(id).then(data => dispatch(deleteCommentState(id, data)));
 
 export const editComment = (id, body, timestamp) => dispatch =>
-  editComentApi(id, body, timestamp).then(data => dispatch(id, data));
+  editComentApi(id, body, timestamp).then(data => dispatch(editCommentState(id, data)));

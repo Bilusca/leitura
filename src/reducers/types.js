@@ -5,6 +5,7 @@ export const FETCH_POSTS_BY_CATEGORY = 'FETCH_POSTS_BY_CATEGORY';
 export const FETCH_POST_DETAIL = 'FETCH_POST_DETAIL';
 export const POST_MODAL_STATE = 'POST_MODAL_STATE';
 export const CREATE_POST = 'CREATE_POST';
+export const EDIT_POST = 'EDIT_POST';
 export const VOTE_POST = 'VOTE_POST';
 export const DELETE_POST = 'DELETE_POST';
 

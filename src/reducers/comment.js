@@ -4,6 +4,7 @@ import {
   CREATE_COMMENT,
   VOTE_COMMENT,
   DELETE_COMMENT,
+  EDIT_COMMENT,
 } from './types';
 
 const INITIAL_STATE = {
@@ -50,6 +51,20 @@ export const commentReducer = (state = INITIAL_STATE, action) => {
           }),
         },
       };
+    case EDIT_COMMENT: 
+      return {
+        ...state,
+        commentList: {
+          comments: state.commentList.comments.map(comment => {
+            if (comment.id === action.id) {
+              comment = action.payload;
+              return comment;
+            }
+
+            return comment;
+          })
+        }
+      }
     case DELETE_COMMENT:
       return {
         ...state,

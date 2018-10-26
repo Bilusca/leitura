@@ -31,8 +31,8 @@ export const getPost = postId =>
     .then(res => res.json())
     .then(data => data);
 
-export const savePost = post => {
-  return fetch(`${api}/posts`, {
+export const savePost = post =>
+  fetch(`${api}/posts`, {
     method: 'POST',
     headers: headers,
     body: JSON.stringify(post),
@@ -40,7 +40,16 @@ export const savePost = post => {
     .then(res => res.json())
     .then(data => data)
     .catch(err => console.dir(err));
-};
+
+export const editPostApi = (id, title, body) =>
+  fetch(`${api}/posts/${id}`, {
+    method: 'PUT',
+    headers: headers,
+    body: JSON.stringify({ title, body }),
+  })
+    .then(res => res.json())
+    .then(data => data)
+    .catch(err => console.dir(err));
 
 export const voteForPost = (id, option) =>
   fetch(`${api}/posts/${id}`, {
