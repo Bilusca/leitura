@@ -7,6 +7,7 @@ import {
   VOTE_POST,
   DELETE_POST,
   EDIT_POST,
+  INCREMENT_DECREMENT_POST_COMMENTS,
 } from './types';
 
 const INITIAL_STATE = {
@@ -154,6 +155,19 @@ export const postReducer = (state = INITIAL_STATE, action) => {
         },
         activePost: {
           post: null,
+        },
+      };
+    case INCREMENT_DECREMENT_POST_COMMENTS:
+      return {
+        ...state,
+        activePost: {
+          post: {
+            ...activePost.post,
+            commentCount:
+              action.incOrDec === 'increment'
+                ? activePost.post.commentCount + 1
+                : activePost.post.commentCount - 1,
+          },
         },
       };
     case DELETE_POST:

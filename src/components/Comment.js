@@ -10,6 +10,7 @@ import {
   voteComment,
   deleteComment,
   changeCommentModalState,
+  incrementDecrementPostCommentCount,
 } from '../actions';
 import { connect } from 'react-redux';
 import moment from 'moment';
@@ -24,6 +25,7 @@ const Comment = ({
   voteComment,
   deleteComment,
   changeCommentModalState,
+  incrementDecrementPostCommentCount,
 }) => (
   <div className="comment">
     <div className="comment-devider">
@@ -51,7 +53,13 @@ const Comment = ({
           >
             <FiEdit />
           </button>
-          <button className="remove" onClick={() => deleteComment(id)}>
+          <button
+            className="remove"
+            onClick={() => {
+              deleteComment(id);
+              incrementDecrementPostCommentCount('decrement');
+            }}
+          >
             <FiTrash2 />
           </button>
         </div>
@@ -71,6 +79,8 @@ const mapDispatchToProps = dispatch => ({
   deleteComment: id => dispatch(deleteComment(id)),
   changeCommentModalState: (bool, editable = {}) =>
     dispatch(changeCommentModalState(bool, editable)),
+  incrementDecrementPostCommentCount: incOrDec =>
+    dispatch(incrementDecrementPostCommentCount('decrement')),
 });
 
 export default connect(

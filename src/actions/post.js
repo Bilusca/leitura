@@ -7,6 +7,7 @@ import {
   VOTE_POST,
   DELETE_POST,
   EDIT_POST,
+  INCREMENT_DECREMENT_POST_COMMENTS,
 } from '../reducers/types';
 import {
   getAllPosts,
@@ -37,7 +38,7 @@ export const postDetail = post => ({
 export const changePostModalState = (bool, editablePost = {}) => ({
   type: POST_MODAL_STATE,
   bool,
-  editablePost
+  editablePost,
 });
 
 export const savePostState = payload => ({
@@ -49,12 +50,17 @@ export const editPostState = (id, payload) => ({
   type: EDIT_POST,
   id,
   payload,
-})
+});
 
 export const postVoteState = (id, payload) => ({
   type: VOTE_POST,
   id,
   payload,
+});
+
+export const incrementDecrementPostCommentCount = incOrDec => ({
+  type: INCREMENT_DECREMENT_POST_COMMENTS,
+  incOrDec,
 });
 
 export const deletePostState = (id, payload) => ({
@@ -82,11 +88,12 @@ export const savePostApi = post => dispatch =>
     .catch(error => console.log(error));
 
 export const editPost = (id, title, body) => dispatch =>
-    editPostApi(id, title, body).then(payload => dispatch(editPostState(id, payload)))
+  editPostApi(id, title, body).then(payload =>
+    dispatch(editPostState(id, payload))
+  );
 
 export const votePost = (id, vote) => dispatch =>
   voteForPost(id, vote).then(payload => dispatch(postVoteState(id, payload)));
 
 export const deletePost = id => dispatch =>
   deletePostApi(id).then(payload => dispatch(deletePostState(id, payload)));
-
